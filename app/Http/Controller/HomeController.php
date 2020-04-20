@@ -41,11 +41,13 @@ class HomeController
     /**
      * @RequestMapping("/hi")
      *
+     *
      * @return Response
      */
     public function hi(): Response
     {
         return context()->getResponse()->withContent('hi');
+
     }
 
     /**
@@ -68,5 +70,16 @@ class HomeController
     public function wsTest(): Response
     {
         return view('home/ws-test');
+    }
+
+    /**
+     * @RequestMapping("/testapsect")
+     * @param string $name
+     * @return Response
+     */
+    public function testapsect(string $name): Response
+    {
+        sleep(3);
+        return context()->getResponse()->withData(['ok']);
     }
 }

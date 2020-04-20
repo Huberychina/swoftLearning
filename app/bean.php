@@ -38,7 +38,7 @@ return [
     ],
     'httpServer'        => [
         'class'    => HttpServer::class,
-        'port'     => 18306,
+        'port'     => 18500,
         'listener' => [
             // 'rpc' => bean('rpcServer'),
             // 'tcp' => bean('tcpServer'),
@@ -75,9 +75,9 @@ return [
     ],
     'db'                => [
         'class'    => Database::class,
-        'dsn'      => 'mysql:dbname=test;host=127.0.0.1',
+        'dsn'      => 'mysql:dbname=test;host=192.168.2.248:13306',
         'username' => 'root',
-        'password' => 'swoft123456',
+        'password' => '123456',
         'charset' => 'utf8mb4',
     ],
     'db2'               => [
@@ -113,28 +113,13 @@ return [
             'prefix' => 'swoft:'
         ]
     ],
-    'user'              => [
-        'class'   => ServiceClient::class,
-        'host'    => '127.0.0.1',
-        'port'    => 18307,
-        'setting' => [
-            'timeout'         => 0.5,
-            'connect_timeout' => 1.0,
-            'write_timeout'   => 10.0,
-            'read_timeout'    => 0.5,
-        ],
-        'packet'  => bean('rpcClientPacket')
-    ],
-    'user.pool'         => [
-        'class'  => ServicePool::class,
-        'client' => bean('user'),
-    ],
     'rpcServer'         => [
         'class' => ServiceServer::class,
+        'port'    => 18501,
     ],
     'wsServer'          => [
         'class'   => WebSocketServer::class,
-        'port'    => 18308,
+        'port'    => 18502,
         'listener' => [
             'rpc' => bean('rpcServer'),
             // 'tcp' => bean('tcpServer'),
